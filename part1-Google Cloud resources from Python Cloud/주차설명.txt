@@ -1,0 +1,26 @@
+google 클라우드 리소스에 수동으로 액세스하는 것은 간단.
+터미널에서 웹 인터페이스 또는 gcloud sdk를 사용할 수 있지만 프로그래밍 방식으론 어렵다.
+비디오 권한 부여 때문에
+
+---노트북 인스턴스를 나열하는 클라우드 기능 만들기---
+0. google cloud plattom에서 notebooks을 이용
+
+
+1. google notebooks API, calling with postman
+구글에서 google notebooks api 검색하여 인터페이스를 나열되어있는 값을 알려주는 주소를 가져올 수 있다.
+
+포스트맨으로 실행하면 인증이 누락되어있다고하는데 포스트맨에 인증 토큰을 넣어 send처리하면 작동되는 것을 알 수 있다.
+
+2. google api python client
+터미널에서 구글이 설치 되어있는지 확인
+- pip3 install google-api-python-client
+그리고 파이썬 repo를 실행한다. 
+python3
+->from googleapiclient import discovery
+->noteboos = discovery.build("notebooks", "v1")
+->notebooks.projects().location().instances().list(parent=projects/{projectId}/locations/{location}).execute()
+parent부분은 클라우스 REST reference v1 list에서 찾아볼 수 있다.
+
+3. transfer the code to a cloud function
+다음의 파이썬 값을 클라우드에 이용하여 사용하면 노트북의 정보 값을 표현할 수 있다.
+

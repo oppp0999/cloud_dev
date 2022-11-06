@@ -1,0 +1,30 @@
+php aws는 정적 IP와 무료 인증서를 생성하는 도구가 포함
+
+1. creating the lightsail instance
+google -> aws lightsail
+-> virtual private server and web hosting-amazon lightsail....
+로그인하고 build using virtual servers를 이용해서 가상서버로 빌드를 시작
+리눅스, 아파치, mysql 이 포함된 LAMP(PHP7)
+ssh키를 다운로드하고 빌드
+
+2. uploading the website files using filezilla
+고정 아이피가 제공되고 있기에 아이피를 입력하여 접속하면 기본 랜딩 화면을 볼 수 있다.
+파일 질라를 사이트에 아이피를 넣어 프로토콜을 sftp를 입력하여 사용하면
+사용자가 ssh를 다운로드할 수 있게 인증한다.
+그러면 폴더 path에 접속하여 랜더 파일을 넣어 사용할 수 있다.
+
+
+3. Registering the IP in DNS
+정적 ip를 도메인과 연결하여 접속을 시도할 수 있다.
+
+4. Generation a free SSL certificate with Let's Encrypt
+google -> bitnami lamp certificate
+인증 도구를 사용해서 무료 인증서를 생성할 수 있다.
+
+터미널을 키고 인증서를 다운한 폴더로 이동
+인증서를 수행할 수 있도록 권한을 400으로 설정 후 
+그리고 ssh 도구를 이용해서 ssh -i ....cer과 고정 아이피를  bitnami@http://~~~
+를 넣으면 인증서를 생성할 수 있는 명령어가 동작한다.
+
+인증 생성 명령어 -> sudo /opt/bitnami/bncert-tool
+그리고 도메인주소를 입력하고 각 옵션들을 설정하면 -> https의 연결을 얻을 수 있다.
